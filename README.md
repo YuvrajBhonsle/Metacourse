@@ -1,1 +1,1 @@
-# Metacourse
+Metacourse Application
