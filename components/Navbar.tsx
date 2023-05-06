@@ -1,17 +1,22 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Avatar, Box, Button, Center, Flex, Image, Menu,
   MenuButton, MenuDivider, MenuItem, MenuList, Stack,
   useColorMode, useColorModeValue
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function Navbar({ props }: any) {
+  const router = useRouter();
+
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box w={"10%"} alignItems={"center"} bg={"white"}>
+          <Box w={"10%"} alignItems={"center"} bg={"white"} onClick={() => router.push('/')} cursor={"pointer"}>
             <Image src="/next.svg" />
           </Box>
 

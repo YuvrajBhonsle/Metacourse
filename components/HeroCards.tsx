@@ -1,8 +1,12 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import {
   Box, Flex, Heading, HStack, Img, Link, Text, useColorModeValue
 } from "@chakra-ui/react";
 
 export const HeroCards = ({ props, id }: any) => {
+  const router = useRouter();
+
   return (
     <>
       <Box
@@ -87,10 +91,15 @@ export const HeroCards = ({ props, id }: any) => {
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
+              onClick={() => router.push("/branch/" + id)} 
+              cursor={"pointer"}
+              _hover={{
+                textDecoration: "underline",
+              }}
             >
-              <Link href={"/branch/" + id} key={props}>
+              {/* <Link href={"/branch/" + id} key={props}> */}
                 View more
-              </Link>
+              {/* </Link> */}
             </Text>
           </Flex>
         </HStack>

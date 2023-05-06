@@ -1,3 +1,5 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { IMAGE_LINK } from "@/constants";
 import { Box, Flex, Heading, Img, useColorModeValue } from "@chakra-ui/react";
 
@@ -19,6 +21,8 @@ const SemNum = () => {
 };
 
 const SemesterCard = ({ number }: { number: number }) => {
+  const router = useRouter();
+
   return (
     <Box
       bg={useColorModeValue("white", "blackAlpha.600")}
@@ -48,7 +52,7 @@ const SemesterCard = ({ number }: { number: number }) => {
           alt={"Blog Image"}
         />
       </Box>
-      <Heading mt={"3"}>Semester {number + 1}</Heading>
+      <Heading mt={"3"} onClick={() => router.push('/dashboard')} cursor={"pointer"}>Semester {number + 1}</Heading>
     </Box>
   );
 };
