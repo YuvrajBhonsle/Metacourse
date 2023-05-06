@@ -1,25 +1,11 @@
-import { ReactNode } from "react";
-import {
-  Box,
-  Flex,
-  Avatar,
-  Link,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
-  useColorMode,
-  Center,
-  Image,
-} from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  Avatar, Box, Button, Center, Flex, Image, Menu,
+  MenuButton, MenuDivider, MenuItem, MenuList, Stack,
+  useColorMode, useColorModeValue
+} from "@chakra-ui/react";
 
-export default function Navbar({props}:any) {
+export default function Navbar({ props }: any) {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
@@ -30,7 +16,6 @@ export default function Navbar({props}:any) {
           </Box>
 
           <Box fontSize={"xl"}>HOME</Box>
-
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <Button onClick={toggleColorMode}>

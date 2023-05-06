@@ -1,24 +1,8 @@
 import {
-  Box,
-  Heading,
-  Text,
-  Img,
-  Flex,
-  Center,
-  useColorModeValue,
-  HStack,
-  Button,
-  Link,
+  Box, Flex, Heading, HStack, Img, Link, Text, useColorModeValue
 } from "@chakra-ui/react";
-import {
-  ArrowUpIcon,
-  ExternalLinkIcon,
-  ArrowDownIcon,
-  ArrowUpDownIcon,
-  ArrowRightIcon,
-} from "@chakra-ui/icons";
 
-export const HeroCards = ({props, id}: any) => {
+export const HeroCards = ({ props, id }: any) => {
   return (
     <>
       <Box
@@ -27,7 +11,7 @@ export const HeroCards = ({props, id}: any) => {
         my={5}
         mx={[0, 5]}
         overflow={"hidden"}
-        bg={useColorModeValue("white","blackAlpha.600")}
+        bg={useColorModeValue("white", "blackAlpha.600")}
         color={useColorModeValue("black", "white")}
         border={"1px"}
         borderColor="black"
@@ -37,8 +21,8 @@ export const HeroCards = ({props, id}: any) => {
           // bg: useColorModeValue("blackAlpha.600","white"),
           // color: useColorModeValue("black", "white"),
           boxShadow: useColorModeValue("6px 6px 0 gray", "6px 6px 0 white"),
-          transition: "all 0.65s ease",
-          transform: "scale(1.1)",
+          transition: "all 0.25s ease",
+          transform: "scale(1.04)",
         }}
         cursor={"pointer"}
       >
@@ -67,10 +51,14 @@ export const HeroCards = ({props, id}: any) => {
               {"ENGINEERING"}
             </Text>
           </Box>
-          <Heading color={useColorModeValue("black", "white")} fontSize={"2xl"} noOfLines={2}>
+          <Heading
+            color={useColorModeValue("black", "white")}
+            fontSize={"2xl"}
+            noOfLines={2}
+          >
             {props}
           </Heading>
-          <Text color={useColorModeValue("black","gray.400")} noOfLines={2}>
+          <Text color={useColorModeValue("black", "gray.400")} noOfLines={2}>
             Resources for {props}
           </Text>
         </Box>
@@ -84,10 +72,26 @@ export const HeroCards = ({props, id}: any) => {
             w="full"
           >
             {/* <Button border={"black"}>View More</Button> */}
-            <Text fontSize={'md'} fontWeight={'semibold'} align={"center"} w={"100%"} bgColor={useColorModeValue("black","whiteAlpha.300")} color={useColorModeValue("white", "gray.100")} mx={"4rem"} my={"0"} py={"0.5rem"} px={'0.5rem'} borderRadius={"md"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
-              <Link href={"/branch/" + id} key={props} >View more</Link>
+            <Text
+              fontSize={"md"}
+              fontWeight={"semibold"}
+              align={"center"}
+              w={"100%"}
+              bgColor={useColorModeValue("black", "whiteAlpha.300")}
+              color={useColorModeValue("white", "gray.100")}
+              mx={"4rem"}
+              my={"0"}
+              py={"0.5rem"}
+              px={"0.5rem"}
+              borderRadius={"md"}
+              display={"flex"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Link href={"/branch/" + id} key={props}>
+                View more
+              </Link>
             </Text>
-            {/* <ArrowRightIcon /> */}
           </Flex>
         </HStack>
       </Box>
