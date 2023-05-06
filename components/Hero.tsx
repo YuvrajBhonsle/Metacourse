@@ -1,4 +1,4 @@
-import { Center, Flex, Grid } from "@chakra-ui/react";
+import { Center, Flex, Grid, Box } from "@chakra-ui/react";
 import { HeroCards } from "./HeroCards";
 
 export default function Hero() {
@@ -6,12 +6,12 @@ export default function Hero() {
   const branch = ["AERONAUTICAL ENGINEERING", "MECHANICAL ENGINEERING", "CIVIL ENGINEERING", "COMPUTER ENGINEERING", "ELECTRICAL ENGINEERING", "INFORMATION TECHNOLOGY", "IC ENGINEERING", "EC ENGINEERING", "MCA"]
 
   return (
-    <>
+    <Box w={"100vw"}>
     <Center fontSize={"3xl"} fontWeight={"bold"} mt={"5"} mb={"2"} letterSpacing={"wide"}>WELCOME TO METACOURSE</Center>
 
-    <Grid templateColumns='repeat(3, 1fr)' gap={4} m={"3rem"} mx={"5rem"}>
+    <Grid templateColumns={'repeat(3, 1fr)'} gap={"1"} mx={"3rem"} my={"3rem"}>
       { branch.map((name, key) => <HeroCards props={name} key={key} id={name.split(" ").join("").toLowerCase()} />) }
     </Grid>
-    </>
+    </Box>
   );
 }
