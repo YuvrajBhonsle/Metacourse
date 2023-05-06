@@ -9,7 +9,7 @@ export default function Hero() {
     <>
     <Center fontSize={"3xl"} fontWeight={"bold"} mt={"5"} mb={"2"} letterSpacing={"wide"}>WELCOME TO METACOURSE</Center>
 
-    <Grid templateColumns='repeat(3, 1fr)' gap={4} m={"3rem"}>
+    <Grid templateColumns='repeat(3, 1fr)' gap={4} m={"3rem"} mx={"5rem"}>
       { branch.map((name, key) => <HeroCards props={name} key={key} id={name.split(" ").join("").toLowerCase()} />) }
     </Grid>
     </>
