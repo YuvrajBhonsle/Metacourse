@@ -1,26 +1,42 @@
-'use client';
-import { useRouter } from 'next/navigation';
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
-  Avatar, Box, Button, Center, Flex, Image, Menu,
-  MenuButton, MenuDivider, MenuItem, MenuList, Stack,
-  useColorMode, useColorModeValue
+  Avatar,
+  Box,
+  Button,
+  Center,
+  Flex,
+  Image,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Stack,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Navbar({ props }: any) {
+  const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
 
-  const { colorMode, toggleColorMode } = useColorMode();
+  const getRouteName = () => {
+    if (router.pathname.includes("branch")) {
+      return router.query.branch;
+    } else return "Home";
+    // MORE ROUTES CAN VE DEFINED HERE
+  };
+
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box w={"10%"} alignItems={"center"} bg={"white"} onClick={() => router.push('/')} cursor={"pointer"}>
+          <Box w={"10%"} alignItems={"center"} bg={"white"}>
             <Image src="/next.svg" />
           </Box>
 
-          <Box fontSize={"xl"}>HOME</Box>
+          <Box fontSize={"xl"}>{getRouteName()}</Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <Button onClick={toggleColorMode}>
