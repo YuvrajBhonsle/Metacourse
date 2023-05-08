@@ -13,7 +13,7 @@ import {
   MenuList,
   Stack,
   useColorMode,
-  useColorModeValue
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
@@ -23,9 +23,11 @@ export default function Navbar() {
 
   const getRouteName = () => {
     if (router.pathname.includes("branch")) {
-      const branchNameFromRouter = router.asPath.split("/branch/")[1].slice(0);
-      const formattedName = branchNameFromRouter.split("-");
-      if (formattedName.length == 2) {
+      const branchNameFromRouter = router?.asPath
+        ?.split("/branch/")[1]
+        ?.slice(0);
+      const formattedName = branchNameFromRouter?.split("-");
+      if (formattedName?.length == 2) {
         return formattedName[0] + " " + formattedName[1];
       } else return formattedName;
     } else return "Home";
