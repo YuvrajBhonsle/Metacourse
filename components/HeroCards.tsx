@@ -21,6 +21,14 @@ const HeroCards: React.FC<HeroCardsProps> = ({ title }) => {
   const navigate = React.useCallback(() => {
     router.push("/branch/" + title);
   }, []);
+  // console.log(title)
+
+  const formattedName = () => {
+    let formattedName = title.split("-");
+    if (formattedName.length == 2) {
+      return formattedName[0] + " " + formattedName[1];
+    } else return formattedName;
+  }
 
   return (
     <>
@@ -75,10 +83,10 @@ const HeroCards: React.FC<HeroCardsProps> = ({ title }) => {
             fontSize={"2xl"}
             noOfLines={2}
           >
-            {title}
+            {formattedName()}
           </Heading>
           <Text color={useColorModeValue("black", "gray.400")} noOfLines={2}>
-            Resources for {title}
+            Resources for {formattedName()}
           </Text>
         </Box>
         <HStack borderTop={"1px"} color="black">
