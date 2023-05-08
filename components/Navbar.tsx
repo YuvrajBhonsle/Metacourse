@@ -29,7 +29,7 @@ export default function Navbar() {
       return route
         .split('%20')
         .map((word, index) => word[0].toUpperCase() + word.slice(1))
-        .join(' ');
+        .join(' ') as string;
     } else return 'Home';
     // MORE ROUTES CAN BE DEFINED HERE
   };
