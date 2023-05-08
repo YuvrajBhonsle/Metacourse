@@ -1,11 +1,26 @@
-'use client';
-import { useRouter } from 'next/navigation';
+"use client";
+import { useRouter } from "next/navigation";
 import {
-  Box, Flex, Heading, HStack, Img, Link, Text, useColorModeValue
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  Img,
+  Link,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
+import React from "react";
 
-export const HeroCards = ({ props, id }: any) => {
+type HeroCardsProps = {
+  title: string;
+};
+const HeroCards: React.FC<HeroCardsProps> = ({ title }) => {
   const router = useRouter();
+
+  const navigate = React.useCallback(() => {
+    router.push("/branch/" + title);
+  }, []);
 
   return (
     <>
@@ -60,10 +75,10 @@ export const HeroCards = ({ props, id }: any) => {
             fontSize={"2xl"}
             noOfLines={2}
           >
-            {props}
+            {title}
           </Heading>
           <Text color={useColorModeValue("black", "gray.400")} noOfLines={2}>
-            Resources for {props}
+            Resources for {title}
           </Text>
         </Box>
         <HStack borderTop={"1px"} color="black">
@@ -91,14 +106,14 @@ export const HeroCards = ({ props, id }: any) => {
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
-              onClick={() => router.push("/branch/" + id)} 
+              onClick={navigate}
               cursor={"pointer"}
               _hover={{
                 textDecoration: "underline",
               }}
             >
               {/* <Link href={"/branch/" + id} key={props}> */}
-                View more
+              View more
               {/* </Link> */}
             </Text>
           </Flex>
@@ -107,3 +122,5 @@ export const HeroCards = ({ props, id }: any) => {
     </>
   );
 };
+
+export default React.memo(HeroCards);
