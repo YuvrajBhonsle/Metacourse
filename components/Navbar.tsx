@@ -30,7 +30,9 @@ export default function Navbar() {
       if (formattedName?.length == 2) {
         return formattedName[0] + " " + formattedName[1];
       } else return formattedName;
-    } else return "Home";
+    } else if(!router.pathname.includes("/branch/")){
+      return "Home";
+    } else return "MetaCourse";
   };
 
   return (
