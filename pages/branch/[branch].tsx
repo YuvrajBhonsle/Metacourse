@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { IMAGE_LINK } from "@/constants";
 import { Box, Flex, Heading, Img, useColorModeValue } from "@chakra-ui/react";
 
@@ -20,8 +20,13 @@ const SemNum = () => {
   );
 };
 
+// export default getPathName = () => {
+//   const pathName = `${number+1}_${router.query.branch}`;
+// }
+
 const SemesterCard = ({ number }: { number: number }) => {
   const router = useRouter();
+  
 
   return (
     <Box
@@ -52,7 +57,13 @@ const SemesterCard = ({ number }: { number: number }) => {
           alt={"Blog Image"}
         />
       </Box>
-      <Heading mt={"3"} onClick={() => router.push('/dashboard')} cursor={"pointer"}>Semester {number + 1}</Heading>
+      <Heading mt={"3"} onClick={() => {
+        console.log(number + 1) 
+        console.log(router.pathname)
+        console.log(router.query.branch)
+        console.log(`${number+1}_${router.query.branch}`)
+        router.push(`/data/${number+1}_${router.query.branch}`)
+        }} cursor={"pointer"}>Semester {number + 1}</Heading>
     </Box>
   );
 };
