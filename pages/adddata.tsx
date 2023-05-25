@@ -94,7 +94,6 @@ export default function addData() {
       <Flex>
           <Text p={4}>Course Link: </Text>
           <Input
-        // borderColor={"telegram.200"}
         placeholder='Enter the course details'
         type="url"
         value={courseLink}
