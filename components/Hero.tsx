@@ -1,4 +1,5 @@
 import { APP_NAME } from "@/constants";
+import useFetch from "@/hooks/useFetch";
 import getUniqueKey from "@/utils/getUniqueKey";
 import { Box, Center, Flex } from "@chakra-ui/react";
 import HeroCards from "./HeroCards";
@@ -16,6 +17,13 @@ export default function Hero() {
     "EC-Engineering",
     "MCA",
   ];
+
+  const data = useFetch();
+
+  data(3, "aero").then((res) => {
+    console.log(res);
+  });
+
   return (
     <Box w={"100vw"}>
       <Center
