@@ -67,6 +67,10 @@ export default function addData() {
           isClosable: true,
         });
       }
+      setSemester(0);
+      setBranch('');
+      setCourseName('');
+      setCourseLink('');
     } catch (error) {
       toast({
         title: 'Data not added successfully',
@@ -84,50 +88,61 @@ export default function addData() {
   return (
     <Flex direction={'column'} p={4} m={4}>
       <Center>Enter details to send your data to Database</Center>
-      <Flex alignItems={"center"} justifyContent={"space-evenly"}>
-      <Select 
-      placeholder="Select Semester"
-       variant={'filled'}
-       w={"25rem"}
-       m={4}
-       onChange={(e) => setSemester(Number(e.target.value))}>
-        {options.map((item, key) => (
-          <option value={item.value} key={key}>{item.label}</option>
-        ))}
-      </Select>
-     
-      <Select 
-      placeholder="Select Branch"
-       variant={'filled'}
-       w={"25rem"}
-       m={4}
-       onChange={(e) => setBranch(e.target.value)}>
-        {branches.map((item, key) => (
-          <option value={item.value} key={key}>{item.label}</option>
-        ))}
-      </Select>
+      <Flex alignItems={'center'} justifyContent={'space-evenly'}>
+        <Select
+          placeholder="Select Semester"
+          variant={'filled'}
+          w={'25rem'}
+          m={4}
+          onChange={(e) => setSemester(Number(e.target.value))}
+        >
+          {options.map((item, key) => (
+            <option value={item.value} key={key}>
+              {item.label}
+            </option>
+          ))}
+        </Select>
+
+        <Select
+          placeholder="Select Branch"
+          variant={'filled'}
+          w={'25rem'}
+          m={4}
+          onChange={(e) => setBranch(e.target.value)}
+        >
+          {branches.map((item, key) => (
+            <option value={item.value} key={key}>
+              {item.label}
+            </option>
+          ))}
+        </Select>
       </Flex>
-      
-      <Flex alignItems={"center"}>
+
+      <Flex alignItems={'center'}>
         <Text p={4}>Course Name: </Text>
         <Input
-        borderColor={"telegram.200"}
-        placeholder='Enter the course details'
-        value={courseName}
-        onChange={(e) => setCourseName(e.target.value)}
-        w={"50%"}/>
+          borderColor={'telegram.200'}
+          placeholder="Enter the course details"
+          value={courseName}
+          onChange={(e) => setCourseName(e.target.value)}
+          w={'50%'}
+        />
       </Flex>
 
       <Flex>
-          <Text p={4}>Course Link: </Text>
-          <Input
-        placeholder='Enter the course details'
-        type="url"
-        value={courseLink}
-        onChange={(e) => setCourseLink(e.target.value)}
-        w={"50%"} isRequired/>
+        <Text p={4}>Course Link: </Text>
+        <Input
+          placeholder="Enter the course details"
+          type="url"
+          value={courseLink}
+          onChange={(e) => setCourseLink(e.target.value)}
+          w={'50%'}
+          isRequired
+        />
       </Flex>
-      <Button type='submit' onClick={addDataToDB} isDisabled={isSubmitDisabled}>Submit</Button>
+      <Button type="submit" onClick={addDataToDB} isDisabled={isSubmitDisabled}>
+        Submit
+      </Button>
     </Flex>
   );
 }
