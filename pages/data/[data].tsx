@@ -25,7 +25,7 @@ export default function Branch() {
     <>
       {data && console.log(data.courses)}
       {data ? (
-        <Box>
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexWrap={"wrap"} mx={"1rem"} my={'auto'}>
           {data.hasOwnProperty('courses') &&
           Array.isArray(data.courses) &&
           data.courses.length > 0 ? (
@@ -68,6 +68,7 @@ export default function Branch() {
                   p={1}
                   color="white"
                   mb={"0.125rem"}
+                  borderBottomRightRadius={"2xl"}
                 >
                   <Text fontSize={"0.95rem"} fontWeight={"medium"} p={"0.125rem"}>
                     {"SEMESTER: " + course.data.sem}
@@ -93,6 +94,8 @@ export default function Branch() {
                   my={"0.5rem"}
                   w={"50%"}
                   fontWeight={"semibold"}
+                  borderTopRightRadius={"xl"}
+                  borderBottomLeftRadius={"xl"}
                 >
                   Go to Course
                 </Link>

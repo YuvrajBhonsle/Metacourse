@@ -14,7 +14,6 @@ export default async function handler(req, res) {
     const DataToAdd = {
       data: {
         sem,
-        branch,
         course_name,
         course_link,
       },

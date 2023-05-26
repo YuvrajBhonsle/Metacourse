@@ -1,12 +1,12 @@
-// import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Button, Center, Flex, Input, Select, Text, Textarea } from '@chakra-ui/react';
+import { Button, Center, Flex, Input, Select, Text, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 export default function addData() {
-  const [semester, setSemester] = useState<string>('');
+  const [semester, setSemester] = useState<number>(0);
   const [branch, setBranch] = useState<string>('');
   const [courseName, setCourseName] = useState<string>('');
   const [courseLink, setCourseLink] = useState<string>('');
+  const toast = useToast();
 
   const options = [
     { label: 'Semester 1', value: '1' },
@@ -32,6 +32,17 @@ export default function addData() {
   ];
 
   const addDataToDB = async () => {
+    if (!semester || !branch || !courseName || !courseLink) {
+      toast({
+        title: 'Error',
+        description: 'Please fill in all the required fields.',
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
+
     try {
       const getRes = await fetch('/api/addCourse', {
         method: 'POST',
@@ -48,11 +59,27 @@ export default function addData() {
       if (getRes.ok) {
         const response = getRes.json();
         console.log(response);
+        toast({
+          title: 'Data added successfully',
+          description: 'Your data has been added successfully',
+          status: 'success',
+          duration: 1500,
+          isClosable: true,
+        });
       }
     } catch (error) {
+      toast({
+        title: 'Data not added successfully',
+        description: 'There was an error while adding your data',
+        status: 'error',
+        duration: 1500,
+        isClosable: true,
+      });
       console.log('Error while getting data', error);
     }
   };
+
+  const isSubmitDisabled = !semester || !branch || !courseName || !courseLink;
 
   return (
     <Flex direction={'column'} p={4} m={4}>
@@ -63,7 +90,7 @@ export default function addData() {
        variant={'filled'}
        w={"25rem"}
        m={4}
-       onChange={(e) => setSemester(e.target.value)}>
+       onChange={(e) => setSemester(Number(e.target.value))}>
         {options.map((item, key) => (
           <option value={item.value} key={key}>{item.label}</option>
         ))}
@@ -100,8 +127,7 @@ export default function addData() {
         onChange={(e) => setCourseLink(e.target.value)}
         w={"50%"} isRequired/>
       </Flex>
-      <Button type='submit' onClick={addDataToDB}>Submit</Button>
+      <Button type='submit' onClick={addDataToDB} isDisabled={isSubmitDisabled}>Submit</Button>
     </Flex>
-
   );
 }
