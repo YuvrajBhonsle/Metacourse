@@ -1,9 +1,11 @@
 import { Button, Center, Flex, Input, Select, Text, useToast } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 export default function addData() {
-  const [semester, setSemester] = useState<number>(0);
-  const [branch, setBranch] = useState<string>('');
+  // const [semester, setSemester] = useState<number>(0);
+  // const [branch, setBranch] = useState<string>('');
+  const semesterRef = useRef<HTMLSelectElement>(null);
+  const branchRef = useRef<HTMLSelectElement>(null);
   const [courseName, setCourseName] = useState<string>('');
   const [courseLink, setCourseLink] = useState<string>('');
   const toast = useToast();
@@ -32,7 +34,10 @@ export default function addData() {
   ];
 
   const addDataToDB = async () => {
-    if (!semester || !branch || !courseName || !courseLink) {
+    const semesterValue = semesterRef.current?.value;
+    const branchValue = branchRef.current?.value;
+
+    if (!semesterValue || !branchValue || !courseName || !courseLink) {
       toast({
         title: 'Error',
         description: 'Please fill in all the required fields.',
@@ -50,8 +55,8 @@ export default function addData() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          sem: semester,
-          branch: branch,
+          sem: semesterValue,
+          branch: branchValue,
           course_name: courseName,
           course_link: courseLink,
         }),
@@ -66,11 +71,13 @@ export default function addData() {
           duration: 1500,
           isClosable: true,
         });
+        // setSemester(0);
+        // setBranch('');
+        semesterRef.current.value = '';
+        branchRef.current.value = '';
+        setCourseName('');
+        setCourseLink('');
       }
-      setSemester(0);
-      setBranch('');
-      setCourseName('');
-      setCourseLink('');
     } catch (error) {
       toast({
         title: 'Data not added successfully',
@@ -83,18 +90,19 @@ export default function addData() {
     }
   };
 
-  const isSubmitDisabled = !semester || !branch || !courseName || !courseLink;
+  const isSubmitDisabled = !semesterRef.current?.value || !branchRef.current?.value || !courseName || !courseLink;
 
   return (
     <Flex direction={'column'} p={4} m={4}>
       <Center>Enter details to send your data to Database</Center>
       <Flex alignItems={'center'} justifyContent={'space-evenly'}>
         <Select
+          ref={semesterRef}
           placeholder="Select Semester"
           variant={'filled'}
           w={'25rem'}
           m={4}
-          onChange={(e) => setSemester(Number(e.target.value))}
+          onChange={() => {}}
         >
           {options.map((item, key) => (
             <option value={item.value} key={key}>
@@ -104,11 +112,12 @@ export default function addData() {
         </Select>
 
         <Select
+          ref={branchRef}
           placeholder="Select Branch"
           variant={'filled'}
           w={'25rem'}
           m={4}
-          onChange={(e) => setBranch(e.target.value)}
+          onChange={() => {}}
         >
           {branches.map((item, key) => (
             <option value={item.value} key={key}>
