@@ -34,7 +34,7 @@ export default function addData() {
   ];
 
   const addDataToDB = async () => {
-    const semesterValue = semesterRef.current?.value;
+    const semesterValue = parseInt(semesterRef.current?.value ?? "1");
     const branchValue = branchRef.current?.value;
 
     if (!semesterValue || !branchValue || !courseName || !courseLink) {
@@ -73,8 +73,8 @@ export default function addData() {
         });
         // setSemester(0);
         // setBranch('');
-        semesterRef.current.value = '';
-        branchRef.current.value = '';
+        semesterRef.current!.value = "";
+        branchRef.current!.value = '';
         setCourseName('');
         setCourseLink('');
       }
