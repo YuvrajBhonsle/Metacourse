@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Box, Center, Img, useColorModeValue, Text, Heading, Link } from '@chakra-ui/react';
+import { Box, Center, Img, useColorModeValue, Text, Heading, Link, Grid } from '@chakra-ui/react';
 import useFetch from '@/hooks/useFetch';
 import getCollectionName from '@/utils/getCollectionName';
 
@@ -25,7 +25,7 @@ export default function Branch() {
     <>
       {data && console.log(data.courses)}
       {data ? (
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexWrap={"wrap"} mx={"1rem"} my={'auto'}>
+        <Grid templateColumns={['repeat(1,1fr)', 'repeat(2,1fr)', "repeat(4,1fr)"]} p={'16'}>
           {data.hasOwnProperty('courses') &&
           Array.isArray(data.courses) &&
           data.courses.length > 0 ? (
@@ -67,15 +67,23 @@ export default function Branch() {
                   display={'inline-block'}
                   p={1}
                   color="white"
-                  mb={"0.125rem"}
-                  borderBottomRightRadius={"2xl"}
+                  mb={'0.125rem'}
+                  borderBottomRightRadius={'2xl'}
                 >
-                  <Text fontSize={"0.95rem"} fontWeight={"medium"} p={"0.125rem"}>
-                    {"SEMESTER: " + course.data.sem}
+                  <Text fontSize={'0.95rem'} fontWeight={'medium'} p={'0.125rem'}>
+                    {'SEMESTER: ' + course.data.sem}
                   </Text>
                 </Box>
 
-                <Heading color={useColorModeValue('black', 'white')} fontSize={'2xl'} my={"1rem"} justifyContent={"center"} display={"flex"} alignItems={"center"} px={"1rem"}>
+                <Heading
+                  color={useColorModeValue('black', 'white')}
+                  fontSize={'2xl'}
+                  my={'1rem'}
+                  justifyContent={'center'}
+                  display={'flex'}
+                  alignItems={'center'}
+                  px={'1rem'}
+                >
                   {course.data.course_name}
                 </Heading>
 
@@ -87,24 +95,26 @@ export default function Branch() {
                   bgColor={useColorModeValue('black', 'whiteAlpha.300')}
                   color={useColorModeValue('white', 'gray.100')}
                   cursor={'pointer'}
-                  display={"flex"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  mx={"auto"}
-                  my={"0.5rem"}
-                  w={"50%"}
-                  fontWeight={"semibold"}
-                  borderTopRightRadius={"xl"}
-                  borderBottomLeftRadius={"xl"}
+                  display={'flex'}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  mx={'auto'}
+                  my={'0.5rem'}
+                  w={'50%'}
+                  fontWeight={'semibold'}
+                  borderTopRightRadius={'xl'}
+                  borderBottomLeftRadius={'xl'}
                 >
                   Go to Course
                 </Link>
               </Box>
             ))
           ) : (
-            ( <Center fontWeight={"bold"} fontSize={"3xl"} m={"2rem"}>No courses available.</Center> )
+            <Center fontWeight={'bold'} fontSize={'3xl'} m={'2rem'}>
+              No courses available.
+            </Center>
           )}
-        </Box>
+        </Grid>
       ) : null}
       {isLoading && (
         <Center fontSize={'4xl'} fontWeight={'bold'}>
