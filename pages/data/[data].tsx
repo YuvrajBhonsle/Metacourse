@@ -1,7 +1,17 @@
 'use client';
 import useFetch from '@/hooks/useFetch';
 import getCollectionName from '@/utils/getCollectionName';
-import { Box, Center, Flex, Heading, Img, Link, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Flex,
+  Heading,
+  Img,
+  Link,
+  Text,
+  useColorModeValue,
+  VStack,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -26,7 +36,7 @@ export default function Branch() {
     <>
       {data && console.log(data.courses)}
       {data ? (
-        <Flex flexWrap={'wrap'} justifyContent="center" alignItems={"stretch"}>
+        <Flex flexWrap={'wrap'} justifyContent="center" alignItems={'stretch'}>
           {data.hasOwnProperty('courses') &&
           Array.isArray(data.courses) &&
           data.courses.length > 0 ? (
@@ -75,39 +85,39 @@ export default function Branch() {
                     {'SEMESTER: ' + course.data.sem}
                   </Text>
                 </Box>
+                  <Heading
+                    color={useColorModeValue('black', 'white')}
+                    fontSize={'2xl'}
+                    my={'1rem'}
+                    justifyContent={'center'}
+                    display={'flex'}
+                    alignItems={'center'}
+                    px={'1rem'}
+                    flex={0.9}
+                  >
+                    {course.data.course_name}
+                  </Heading>
 
-                <Heading
-                  color={useColorModeValue('black', 'white')}
-                  fontSize={'2xl'}
-                  my={'1rem'}
-                  justifyContent={'center'}
-                  display={'flex'}
-                  alignItems={'center'}
-                  px={'1rem'}
-                >
-                  {course.data.course_name}
-                </Heading>
-
-                <Link
-                  href={course.data.course_link}
-                  isExternal
-                  px={'1rem'}
-                  py={'0.5rem'}
-                  bgColor={useColorModeValue('black', 'whiteAlpha.300')}
-                  color={useColorModeValue('white', 'gray.100')}
-                  cursor={'pointer'}
-                  display={'flex'}
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                  mx={'auto'}
-                  my={'0.5rem'}
-                  w={'50%'}
-                  fontWeight={'semibold'}
-                  borderTopRightRadius={'xl'}
-                  borderBottomLeftRadius={'xl'}
-                >
-                  Go to Course
-                </Link>
+                  <Link
+                    href={course.data.course_link}
+                    isExternal
+                    px={'1rem'}
+                    py={'0.5rem'}
+                    bgColor={useColorModeValue('black', 'whiteAlpha.300')}
+                    color={useColorModeValue('white', 'gray.100')}
+                    cursor={'pointer'}
+                    display={'flex'}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    mx={'auto'}
+                    my={'0.5rem'}
+                    w={'50%'}
+                    fontWeight={'semibold'}
+                    borderTopRightRadius={'xl'}
+                    borderBottomLeftRadius={'xl'}
+                  >
+                    Go to Course
+                  </Link>
               </Box>
             ))
           ) : (
