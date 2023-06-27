@@ -63,13 +63,14 @@ export default function Hero() {
   });
 
   return (
-    <Box w={"100vw"}>
+    <Box w={"100vw"} px={"1.5rem"}>
       <Center
         fontSize={"3xl"}
         fontWeight={"bold"}
         mt={"5"}
         mb={"2"}
         letterSpacing={"wide"}
+        textAlign={"center"}
       >
         Welcome to {APP_NAME}
       </Center>

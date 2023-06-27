@@ -40,7 +40,7 @@ export default function Navbar() {
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Flex alignItems={"center"} justify={"center"} bg={"white"} onClick={() => router.push('/')} cursor={"pointer"}>
-            <Image src="/logo.png" h={"3rem"} w={"6rem"} rounded={"md"} />
+            <Image src="/logo.png" h={"3rem"} w={"5rem"} borderRadius='full'/>
           </Flex>
 
           <Box fontSize={"xl"}>{getRouteName()}</Box>
