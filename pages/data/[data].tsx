@@ -32,6 +32,18 @@ export default function Branch() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
 
+  function getCoverImage(imgLInk:string) {
+    if (typeof imgLInk === "undefined") {
+      return undefined
+    }
+    if (imgLInk.includes("coursera")) {
+      return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWfLWw0xU3dMQIEB9_lyGXuUu56YOMx42a6g';
+    }
+    if (imgLInk.includes("udemy")) {
+      return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWBuIugYCCcveBv-VFdkFVG9ZeexYJeNNm1Q';
+    }
+  }
+
   return (
     <>
       {data && console.log(data.courses)}
@@ -63,6 +75,7 @@ export default function Branch() {
                 <Box h={'200px'} borderBottom={'1px'} borderColor="black">
                   <Img
                     src={
+                      getCoverImage(course.data.course_link) ||
                       'https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
                     }
                     roundedTop={'sm'}
@@ -85,39 +98,40 @@ export default function Branch() {
                     {'SEMESTER: ' + course.data.sem}
                   </Text>
                 </Box>
-                  <Heading
-                    color={useColorModeValue('black', 'white')}
-                    fontSize={'2xl'}
-                    my={'1rem'}
-                    justifyContent={'center'}
-                    display={'flex'}
-                    alignItems={'center'}
-                    px={'1rem'}
-                    flex={0.9}
-                  >
-                    {course.data.course_name}
-                  </Heading>
+                <Heading
+                  color={useColorModeValue('black', 'white')}
+                  fontSize={'2xl'}
+                  my={'1rem'}
+                  justifyContent={'center'}
+                  display={'flex'}
+                  alignItems={'center'}
+                  px={'1rem'}
+                  flex={0.9}
+                  noOfLines={2}
+                >
+                  {course.data.course_name}
+                </Heading>
 
-                  <Link
-                    href={course.data.course_link}
-                    isExternal
-                    px={'1rem'}
-                    py={'0.5rem'}
-                    bgColor={useColorModeValue('black', 'whiteAlpha.300')}
-                    color={useColorModeValue('white', 'gray.100')}
-                    cursor={'pointer'}
-                    display={'flex'}
-                    alignItems={'center'}
-                    justifyContent={'center'}
-                    mx={'auto'}
-                    my={'0.5rem'}
-                    w={'50%'}
-                    fontWeight={'semibold'}
-                    borderTopRightRadius={'xl'}
-                    borderBottomLeftRadius={'xl'}
-                  >
-                    Go to Course
-                  </Link>
+                <Link
+                  href={course.data.course_link}
+                  isExternal
+                  px={'1rem'}
+                  py={'0.5rem'}
+                  bgColor={useColorModeValue('black', 'whiteAlpha.300')}
+                  color={useColorModeValue('white', 'gray.100')}
+                  cursor={'pointer'}
+                  display={'flex'}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  mx={'auto'}
+                  my={'0.5rem'}
+                  w={'50%'}
+                  fontWeight={'semibold'}
+                  borderTopRightRadius={'xl'}
+                  borderBottomLeftRadius={'xl'}
+                >
+                  Go to Course
+                </Link>
               </Box>
             ))
           ) : (
