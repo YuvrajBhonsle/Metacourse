@@ -39,7 +39,7 @@ const SemesterCard = ({ number }: { number: number }) => {
     >
       <Box h={'200px'} borderBottom={'1px'} borderColor="black">
         <Img
-          src={SEM_IMAGES[0]}
+          src={SEM_IMAGES[1]}
           roundedTop={'sm'}
           objectFit="cover"
           h="full"
