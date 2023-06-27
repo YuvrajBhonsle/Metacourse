@@ -39,9 +39,9 @@ export default function Navbar() {
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box w={"10%"} alignItems={"center"} bg={"white"} onClick={() => router.push('/')} cursor={"pointer"}>
-            <Image src="/next.svg" />
-          </Box>
+          <Flex alignItems={"center"} justify={"center"} bg={"white"} onClick={() => router.push('/')} cursor={"pointer"}>
+            <Image src="/logo.png" h={"3rem"} w={"6rem"} rounded={"md"} />
+          </Flex>
 
           <Box fontSize={"xl"}>{getRouteName()}</Box>
           <Flex alignItems={"center"}>
