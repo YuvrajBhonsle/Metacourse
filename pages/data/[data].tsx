@@ -75,7 +75,7 @@ export default function Branch() {
                   </Text>
                 </Box>
 
-                <Heading color={useColorModeValue('black', 'white')} fontSize={'2xl'} my={"1rem"} justifyContent={"center"} display={"flex"} alignItems={"center"}>
+                <Heading color={useColorModeValue('black', 'white')} fontSize={'2xl'} my={"1rem"} justifyContent={"center"} display={"flex"} alignItems={"center"} px={"1rem"}>
                   {course.data.course_name}
                 </Heading>
 
