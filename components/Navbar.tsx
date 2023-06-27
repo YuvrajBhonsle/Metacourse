@@ -6,6 +6,7 @@ import {
   Center,
   Flex,
   Image,
+  Link,
   Menu,
   MenuButton,
   MenuDivider,
@@ -83,6 +84,7 @@ export default function Navbar() {
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
               </Menu> */}
+              <Button><Link href="/login">Login</Link></Button>
             </Stack>
           </Flex>
         </Flex>
