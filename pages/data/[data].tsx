@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
-import { useRouter } from 'next/router';
-import { Box, Center, Img, useColorModeValue, Text, Heading, Link, Grid } from '@chakra-ui/react';
 import useFetch from '@/hooks/useFetch';
 import getCollectionName from '@/utils/getCollectionName';
+import { Box, Center, Flex, Heading, Img, Link, Text, useColorModeValue } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 export default function Branch() {
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
@@ -19,13 +19,14 @@ export default function Branch() {
       setData(res);
       setIsLoading(false);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
 
   return (
     <>
       {data && console.log(data.courses)}
       {data ? (
-        <Grid templateColumns={['repeat(1,1fr)', 'repeat(2,1fr)', "repeat(4,1fr)"]} p={'16'}>
+        <Flex flexWrap={'wrap'} justifyContent="center" alignItems={"stretch"}>
           {data.hasOwnProperty('courses') &&
           Array.isArray(data.courses) &&
           data.courses.length > 0 ? (
@@ -114,7 +115,7 @@ export default function Branch() {
               No courses available.
             </Center>
           )}
-        </Grid>
+        </Flex>
       ) : null}
       {isLoading && (
         <Center fontSize={'4xl'} fontWeight={'bold'}>
