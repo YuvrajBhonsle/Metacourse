@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/router';
-import { IMAGE_LINK, SEM_IMAGES } from '@/constants';
+import { SEM_IMAGES } from '@/constants';
 import { Box, Flex, Heading, Img, useColorModeValue } from '@chakra-ui/react';
 
 const SemNum = () => {
@@ -39,7 +39,7 @@ const SemesterCard = ({ number }: { number: number }) => {
     >
       <Box h={'200px'} borderBottom={'1px'} borderColor="black">
         <Img
-          src={SEM_IMAGES[1]}
+          src={SEM_IMAGES[number]}
           roundedTop={'sm'}
           objectFit="cover"
           h="full"
