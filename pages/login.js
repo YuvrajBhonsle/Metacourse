@@ -3,8 +3,20 @@ import { Button, Flex, Center, Image, useColorModeValue } from '@chakra-ui/react
 import { auth, provider } from '../firebase';
 import { actionTypes } from '../reducer';
 import { useStateValue } from '../StateProvider';
+import { useRouter } from 'next/router';
 function Login() {
-  const [{}, dispatch] = useStateValue();
+  const router = useRouter();
+  const [{user}, dispatch] = useStateValue();
+
+  React.useEffect(() => {
+    // Check if user is logged in
+    if (user) {
+      // User is already logged in, redirect to main page
+      router.push('/');
+    }
+  }, [user, router]);
+
+
   const signIn = () => {
     auth
       .signInWithPopup(provider)

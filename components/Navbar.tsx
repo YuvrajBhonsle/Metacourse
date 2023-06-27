@@ -17,8 +17,10 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useStateValue } from "@/StateProvider";
 
 export default function Navbar() {
+  const [{user, photo}, dispatch] = useStateValue()
   const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
 
@@ -84,7 +86,7 @@ export default function Navbar() {
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
               </Menu> */}
-              <Button><Link href="/login">Login</Link></Button>
+              {user ? (<Avatar display={"flex"} alignItems={"center"} justifyContent={"center"} size={"sm"} src={photo} />) : (<Button><Link href="/login">Login</Link></Button>)}
             </Stack>
           </Flex>
         </Flex>

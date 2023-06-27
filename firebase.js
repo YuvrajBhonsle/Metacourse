@@ -9,9 +9,19 @@ const firebaseConfig = {
     messagingSenderId: "224852565229",
     appId: "1:224852565229:web:128d2972cdf9ccdce040e4"
 };
+
+export const getUserPhoto = () => {
+  const user = auth.currentUser;
+  if (user && user.photoURL) {
+    return user.photoURL;
+  } else {
+    return null;
+  }
+};
+
 const firebaseApp = fs.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 var provider = new fs.auth.GoogleAuthProvider();
-export { auth, provider };
+export { auth, provider};
 export default db;
