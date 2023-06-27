@@ -14,8 +14,9 @@ import React from "react";
 
 type HeroCardsProps = {
   title: string;
+  branchImg: string;
 };
-const HeroCards: React.FC<HeroCardsProps> = ({ title }) => {
+const HeroCards: React.FC<HeroCardsProps> = ({ title, branchImg }) => {
   const router = useRouter();
 
   const navigate = React.useCallback(() => {
@@ -55,14 +56,12 @@ const HeroCards: React.FC<HeroCardsProps> = ({ title }) => {
       >
         <Box h={"200px"} borderBottom={"1px"} borderColor="black">
           <Img
-            src={
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-            }
+            src={branchImg}
             roundedTop={"sm"}
             objectFit="cover"
             h="full"
             w="full"
-            alt={"Blog Image"}
+            alt={"Branch Image"}
           />
         </Box>
         <Box p={4}>
