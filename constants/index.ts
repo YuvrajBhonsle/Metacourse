@@ -1,5 +1,5 @@
 //App Details
-export const APP_NAME = "MetaCourse";
+export const APP_NAME = "Student-Mitra";
 export const APP_LOGO = "pathtourl";
 export const APP_DESC = "Metacourse ka abstract or description";
 

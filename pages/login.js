@@ -37,7 +37,7 @@ function Login() {
           height={'200px'}
           rounded={'md'}
         ></Image>
-        <Center fontWeight={'semibold'}>Sign In To MetaCourse</Center>
+        <Center fontWeight={'semibold'}>Sign In To Student-Mitra</Center>
         <Button
           fontSize={'xl'}
           bg={useColorModeValue('white', 'blackAlpha.600')}
