@@ -52,7 +52,7 @@ export default function Navbar() {
             onClick={() => router.push('/')}
             cursor={'pointer'}
           >
-            <Image src="/logotra.png" h={'3rem'} w={'auto'} objectFit="cover" alt='logo' />
+            <Image src="/logotra.png" h={'3rem'} w={'auto'} objectFit="cover" alt="logo" />
           </Flex>
 
           <Box fontSize={'xl'}>{getRouteName()}</Box>
@@ -71,11 +71,13 @@ export default function Navbar() {
                   minW={0}
                 >
                   {user && (
-                    <Avatar
-                      size={'sm'}
-                      src={photo}
-                      // isOpen={isOpen} onClose={onClose} onOverlayClick={onClose}
-                    />
+                    <>
+                      <Avatar
+                        size={'sm'}
+                        src={photo}
+                        // isOpen={isOpen} onClose={onClose} onOverlayClick={onClose}
+                      />
+                    </>
                   )}
                 </MenuButton>
                 <MenuList alignItems={'center'}>
@@ -108,6 +110,11 @@ export default function Navbar() {
               {!user && (
                 <Button>
                   <Link href="/login">Login</Link>
+                </Button>
+              )}
+              {user && (
+                <Button>
+                  <Link href="/adddata">Add Data</Link>
                 </Button>
               )}
             </Stack>
