@@ -52,7 +52,7 @@ export default function Navbar() {
             onClick={() => router.push('/')}
             cursor={'pointer'}
           >
-            <Image src="/logo.png" h={'3rem'} w={'5rem'} borderRadius="full" />
+            <Image src="/logotra.png" h={'3rem'} w={'auto'} objectFit="cover" alt='logo' />
           </Flex>
 
           <Box fontSize={'xl'}>{getRouteName()}</Box>
